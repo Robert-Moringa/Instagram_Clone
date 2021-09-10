@@ -25,6 +25,17 @@ class Profile(models.Model):
     bio=models.TextField()
 
 class Like(models.Model):
+    like= models.IntegerField()
+
+    def __str__(self):
+        return str(self.like)
 
 class Comment(models.Model):
+    comment= models.TextField()
 
+    def add_comment(self):
+        self.save()
+    @classmethod
+    def get_comments(cls):
+        comments=cls.objects.all()
+        return comments
