@@ -9,3 +9,22 @@ class Image(models.Model):
     likes = models.ForeignKey('Likes', on_delete=models.CASCADE)
     comments=models.ForeignKey('Comments', on_delete=models.CASCADE)
 
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    @classmethod
+    def update_caption(cls, caption):
+        update = cls.objects.filter(id = id).update(caption=caption)
+        update.save()
+    
+class Profile(models.Model):
+    profile_photo=models.ImageField(upload_to = 'profile/')
+    bio=models.TextField()
+
+class Like(models.Model):
+
+class Comment(models.Model):
+
