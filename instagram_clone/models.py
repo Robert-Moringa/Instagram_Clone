@@ -6,9 +6,9 @@ class Image(models.Model):
     name = models.CharField(max_length = 60)
     image_path = models.ImageField(upload_to = 'uploads/')
     caption = models.TextField()
-    profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
-    likes = models.ForeignKey('Likes', on_delete=models.CASCADE)
-    comments=models.ForeignKey('Comments', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    likes = models.ForeignKey('Like', on_delete=models.CASCADE)
+    comments=models.ForeignKey('Comment',on_delete=models.CASCADE)
     post_date = models.DateTimeField(auto_now=True)
 
     def save_image(self):
@@ -31,7 +31,7 @@ class Image(models.Model):
 class Profile(models.Model):
     profile_photo=models.ImageField(upload_to = 'profile/')
     bio=models.TextField()
-    user = models.OneToOneField(User,related_name='profile' ,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.user.username
@@ -43,16 +43,16 @@ class Profile(models.Model):
 
 class Like(models.Model):
     like= models.IntegerField()
-    user = models.ForeignKey(User, related_name='commented_by', on_delete=models.CASCADE)
-    image = models.ForeignKey(Image, related_name='likes_for', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image_liked = models.ForeignKey(Image, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return str(self.like)
 
 class Comment(models.Model):
-    comment= models.TextField()
-    user = models.ForeignKey(User, related_name='commenter', on_delete=models.CASCADE)
-    image = models.ForeignKey(Image, related_name='commentee', on_delete=models.CASCADE)
+    message= models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image_commented = models.ForeignKey(Image, on_delete=models.CASCADE)
 
     def add_comment(self):
         self.save()
