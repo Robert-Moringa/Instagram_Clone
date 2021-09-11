@@ -24,6 +24,5 @@ urlpatterns = [
     url(r'',include('instagram_clone.urls'),
     url('accounts/', include('registration.backends.simple.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
-    url(r'^tinymce/', include('tinymce.urls')),
     )
 ]
