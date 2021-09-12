@@ -20,9 +20,9 @@ from django.urls import path, include
 from django.conf.urls import url,include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'',include('instagram_clone.urls'),
+    url(r'^admin/', admin.site.urls),
+    url(r'',include('instagram_clone.urls')),
     url('accounts/', include('registration.backends.simple.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
-    )
+
 ]
