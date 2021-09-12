@@ -6,9 +6,9 @@ class Image(models.Model):
     name = models.CharField(max_length = 60)
     image_path = models.ImageField(upload_to = 'uploads/')
     caption = models.TextField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    likes = models.ForeignKey('Like', on_delete=models.CASCADE)
-    comments=models.ForeignKey('Comment',on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    # likes = models.ForeignKey('Like', on_delete=models.CASCADE, blank=True)
+    # comments=models.ForeignKey('Comment',on_delete=models.CASCADE, blank=True)
     post_date = models.DateTimeField(auto_now=True)
 
     def save_image(self):
@@ -17,6 +17,11 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
     
+    def get_all_images(cls):
+        images = cls.objects.all()
+        return images
+        
+    @classmethod
     class Meta:
         ordering = ['-post_date']
 

@@ -5,4 +5,13 @@
 
 <h1>Welcome to my Instagram clone</h1>
 
+{% for post in images %}
+<div class="row col-md-3">
+    <p>{{post.caption}}</p>
+    <a href=""><img src="{{post.image_path.url}}"  class="img-responsive" alt="Image" height="100%"></a>
+    <p>{{post.post_date}}</p>
+</div>
+{% empty %}
+<p>There are no posts yet</p>
+{% endfor %}
 {% endblock %}
