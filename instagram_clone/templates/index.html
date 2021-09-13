@@ -3,15 +3,29 @@
  {% block content %}
  {{block.super}}
 
-<h1>Welcome to my Instagram clone</h1>
+<h1 class="text-center">Welcome to my Instagram clone</h1>
 
-{% for post in images %}
-<div class="row col-md-3">
-    <p>{{post.caption}}</p>
-    <a href=""><img src="{{post.image_path.url}}"  class="img-responsive" alt="Image" height="100%"></a>
-    <p>{{post.post_date}}</p>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="row col-md-6">
+        {% for post in images %}
+        <div class="post" style="border: solid 1px grey; margin-bottom: 2%;">
+            <img src="" alt="profile" width="4%" class="d-inline"><p class="d-inline" style="margin-left: 1%;">{{post.user.username}}</p>
+            <p>{{post.caption}}</p>
+            <a href=""><img src="{{post.image_path.url}}" style="width: 100%; height: 75%; object-fit: cover; " class="img-responsive" alt="Image" height="100%"></a>
+            <div class="row engaging-icons">
+                <span class="icons d-inline" > <a href=""> <i class='far fa-comments ' style='font-size:24px '></i> </a> </span>
+                <span class="icons d-inline" > <a href=""><i class="fa fa-thumbs-up" style="font-size:24px;color: green">  </i></a></span>
+                <span class="icons d-inline"> <a href=""> <i class="fa fa-thumbs-down" style="color:red;font-size:24px;">  </i> </a></span>
+            </div>
+            <p>{{post.post_date}}</p>
+        </div>
+        {% empty %}
+        <p>There are no posts yet</p>
+        {% endfor %}
+    </div>
+    <div class="col-md-3"></div>
 </div>
-{% empty %}
-<p>There are no posts yet</p>
-{% endfor %}
+
 {% endblock %}
