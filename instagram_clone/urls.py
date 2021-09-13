@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns=[
     url('^$',views.welcome,name = 'welcome'),
+     url(r'^new/image$', views.new_post, name='new_image'),
 ]
 
 if settings.DEBUG:
