@@ -6,9 +6,9 @@ class Image(models.Model):
     name = models.CharField(max_length = 60)
     image_path = models.ImageField(upload_to = 'uploads/')
     caption = models.TextField()
-    user = models.ForeignKey(User, related_name="posted_by", on_delete=models.CASCADE, null=True)
-    likes = models.ForeignKey(User, related_name='liked_by', on_delete=models.CASCADE, null=True)
-    comments=models.ForeignKey('Comment', on_delete=models.CASCADE,  null=True)
+    user = models.ForeignKey(User, related_name="posted_by", on_delete=models.CASCADE, null=True, blank =True)
+    likes = models.ForeignKey(User, related_name='liked_by', on_delete=models.CASCADE,blank =True, null=True)
+    comments=models.ForeignKey('Comment', on_delete=models.CASCADE, blank =True, null=True)
     post_date = models.DateTimeField(auto_now=True)
 
     def save_image(self):
@@ -57,10 +57,13 @@ class Like(models.Model):
 class Comment(models.Model):
     message= models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image_commented = models.ForeignKey(Image, on_delete=models.CASCADE)
-
+    created_on = models.DateTimeField(auto_now_add=True,null=True)
     def add_comment(self):
         self.save()
+
+    class Meta:
+        ordering = ['created_on']
+
     @classmethod
     def get_comments(cls):
         comments=cls.objects.all()

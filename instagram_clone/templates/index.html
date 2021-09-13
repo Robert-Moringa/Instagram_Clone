@@ -15,7 +15,7 @@
             <p>{{post.caption}}</p>
             <a href=""><img src="{{post.image_path.url}}" style="width: 100%; height: 75%; object-fit: cover; " class="img-responsive" alt="Image" height="100%"></a>
             <div class="row engaging-icons">
-                <span class="icons d-inline" > <a href=""> <i class='far fa-comments ' style='font-size:24px '></i> </a> </span>
+                <span class="icons d-inline" > <a href="{%url 'new_comment'%}"> <i class='far fa-comments ' style='font-size:24px '></i> </a> </span>
                 <span class="icons d-inline" > <a href=""><i class="fa fa-thumbs-up" style="font-size:24px;color: green">  </i></a></span>
                 <span class="icons d-inline"> <a href=""> <i class="fa fa-thumbs-down" style="color:red;font-size:24px;">  </i> </a></span>
             </div>

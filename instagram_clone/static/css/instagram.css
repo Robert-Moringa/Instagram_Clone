@@ -1,6 +1,9 @@
-*{
+/* *{
     font-family: 'Itim', cursive;
-}
+} */
 .post{
     border: solid 1px grey;
+}
+h1{
+    color: green;
 }
