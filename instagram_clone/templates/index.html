@@ -1,30 +1,87 @@
 {%extends 'base.html'%}
+{%load static%}
 
  {% block content %}
  {{block.super}}
-
-<h1 class="text-center">Welcome to my Instagram clone</h1>
 
 
 <div class="row">
     <div class="col-md-3"></div>
     <div class="row col-md-6">
-        {% for post in images %}
-        <div class="post" style="border: solid 1px grey; margin-bottom: 2%;">
-            <img src="" alt="profile" width="4%" class="d-inline"><p class="d-inline" style="margin-left: 1%;">{{post.user.username}}</p>
-            <p>{{post.caption}}</p>
-            <a href=""><img src="{{post.image_path.url}}" style="width: 100%; height: 75%; object-fit: cover; " class="img-responsive" alt="Image" height="100%"></a>
-            <div class="row engaging-icons">
-                <span class="icons d-inline" > <a href="{%url 'new_comment'%}"> <i class='far fa-comments ' style='font-size:24px '></i> </a> </span>
-                <span class="icons d-inline" > <a href=""><i class="fa fa-thumbs-up" style="font-size:24px;color: green">  </i></a></span>
-                <span class="icons d-inline"> <a href=""> <i class="fa fa-thumbs-down" style="color:red;font-size:24px;">  </i> </a></span>
+
+        <!-- status -->
+<div>
+    <section class="main">
+        <div class="wrapper">
+            <div class="left-col">
+                <div class="status-wrapper">
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'images/oesteen.jpg'%}" alt=""></div>
+                        <p class="username">Joel Osteen</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'images/ronaldo.jpg'%}" alt=""></div>
+                        <p class="username">CR7</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'images/uda.jpg'%}" alt=""></div>
+                        <p class="username">William Ruto</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'images/attacho.png'%}" alt=""></div>
+                        <p class="username">Za Attacho</p>
+                    </div>
+                    <div class="status-card">
+                        <div class="profile-pic"><img src="{% static 'images/robert.jpg'%}" alt=""></div>
+                        <p class="username">Robert Myner</p>
+                    </div>
+                    
             </div>
-            <p>{{post.post_date}}</p>
         </div>
+    </section>
+</div>
+
+
+        {% for post in images %}
+        <section class="main">
+            <div class="wrapper">
+                <div class="left-col">
+        
+                    <div class="post">
+                        <div class="info">
+                            <div class="user">
+                                <div class="profile-pic"><img src="{{post.image_path.url}}" alt=""></div>
+                                <p class="username">{{post.user.username}}</p>
+                            </div>
+                        
+                        </div>
+                        <img src="{{post.image_path.url}}" class="post-image" alt="">
+                        <div class="post-content">
+                            <div class="reaction-wrapper">
+                                <span class="icons" > <a href=""> <i class="far fa-heart"></i></i></a></span>
+                                <span class="icons" > <a href="{%url 'new_comment'%}"> <i class="far fa-comment"></i></a> </span>
+                                <i class="far fa-paper-plane"></i>
+                            </div>
+                            <p class="likes">11 likes</p>
+                            <p class="description"><span>{{post.user.username}} </span> {{post.caption}}</p>
+                            <p class="post-time">{{post.post_date}}</p>
+                        </div>
+                        <div class="comment-wrapper">
+                            <i class="fa fa-smile-o" style="font-size:24px" class="icon"></i>
+                            <input type="text" class="comment-box" placeholder="Add a comment">
+                            <button class="comment-btn">post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         {% empty %}
         <p>There are no posts yet</p>
         {% endfor %}
+
+       
     </div>
+  
     <div class="col-md-3"></div>
 </div>
 
