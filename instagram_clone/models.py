@@ -23,8 +23,8 @@ class Image(models.Model):
 
     @classmethod
     def search_by_name(cls,search_term):
-        images = cls.objects.filter(name__icontains=search_term)
-        return images
+        names = cls.objects.filter(name__icontains=search_term)
+        return names
         
     @classmethod
     class Meta:
