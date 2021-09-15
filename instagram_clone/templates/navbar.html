@@ -4,9 +4,11 @@
         <a class="navbar-brand" href=""><span style="font-family: 'Ma Shan Zheng', cursive; font-size: 120%;">I</span><span style="font-family: 'Cookie', cursive; font-size: 120%">nstagram</span></a><span style="color: lightgray;font-size: 60%;">By Myner Dev</span>
       </a>
     </div>
-    <div class="navigation-search-container">
+    
+    <form class="navigation-search-container" role="search" action="{% url 'search_results' %}">
       <i class="fa fa-search"></i>
-      <input class="search-field" type="text" placeholder="Search">
+      <input class="search-field" type="search" placeholder="Search" name="image_name">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       <div class="search-container">
         <div class="search-container-box">
           <div class="search-results">
@@ -14,7 +16,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </form>
     <div class="navigation-icons">
       <a href="{%url 'welcome'%}" class="dropdown-item">
         <i class="fas fa-home"></i>
