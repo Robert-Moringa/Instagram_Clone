@@ -13,5 +13,5 @@ class NewCommentForm(forms.ModelForm):
 
 class NewProfileForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = Profile
         exclude = ('user',)

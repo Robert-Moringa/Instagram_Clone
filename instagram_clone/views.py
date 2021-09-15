@@ -28,7 +28,7 @@ def profile(request):
         form = NewProfileForm()
 
     profile =Profile.objects.all()
-    return render(request, 'profile.html', {'profile': profile, 'title': title, 'profile': profile})
+    return render(request, 'profile.html', {'profile': profile, 'title': title, 'form': form})
 
 
 @login_required(login_url='/accounts/login/')

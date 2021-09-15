@@ -2,24 +2,35 @@
 {% load bootstrap5 %} 
 
  {% block content %}
- <div class="container">
+ <div class="container itemz" style="margin-top: 110px;">
     {{ block.super}}
         <div class="row">
             <div class="col-md-3">
     
             </div>
             <div class="col-md-6 text-center">
-                <img src="{{profile.profile_photo.url}}" alt="">
+                {%for profile in profile%}
+                <img src="{{profile.profile_photo.url}}" class="profile-" style="
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    padding: 3px;
+                    background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%);
+                " alt="">
+                <p><strong><i>Username</i></strong></p>
                 <h1>{{profile.user.username}}</h1>
-                <p>{{profile.bio}}</p>
+                <p><strong><i>Bio</i></strong></p>
+                <p>'{{profile.bio}}'</p>
+                {%endfor%}
 
                  <div class="card">
 
-                    <form  action="{%url 'new_comment'%}" method="post" enctype="multipart/form-data">
+                    <form  action="{%url 'profile'%}" method="post" enctype="multipart/form-data">
                         {%csrf_token%}
     
                         {% bootstrap_form form%}
-                        <input type="submit" class="btn btn-outline-danger btn-sm" value="Post">
+                        <input type="submit" class="btn btn-outline-danger btn-sm" value="Save">
                     </form>
                  </div>
             </div>
