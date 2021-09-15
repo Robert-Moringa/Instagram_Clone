@@ -7,6 +7,7 @@ urlpatterns=[
     url('^$',views.welcome,name = 'welcome'),
     url(r'^new/image$', views.new_post, name='new_image'),
     url(r'^new/comment$', views.new_comment, name='new_comment'),
+    url(r'^profile/user$', views.profile, name='profile'),
 ]
 
 if settings.DEBUG:

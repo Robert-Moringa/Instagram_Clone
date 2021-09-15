@@ -6,6 +6,13 @@
     margin-top: 5px;
     padding-top: 0;
 }
+.main{
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    /* justify-content: center; */
+    margin-top: 5px;
+}
 
 .info{
     width: 100%;

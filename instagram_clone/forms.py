@@ -1,5 +1,5 @@
 from django import forms
-from .models import Image,Comment
+from .models import Image,Comment, Profile
 
 class NewImageForm(forms.ModelForm):
     class Meta:
@@ -10,3 +10,8 @@ class NewCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         exclude = ('created_on', 'user')
+
+class NewProfileForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        exclude = ('user',)

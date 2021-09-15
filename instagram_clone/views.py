@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Comment, Image
+from .models import Comment, Image, Profile
 from django.contrib.auth.decorators import login_required
-from .forms import NewImageForm, NewCommentForm
+from .forms import NewImageForm, NewCommentForm, NewProfileForm
 
 
 # Create your views here.
@@ -9,6 +9,27 @@ def welcome(request):
     title="Instagram's finest clone"
     images =Image.objects.all()
     return render(request, 'index.html', {'images': images})
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    title="My profile"
+
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        
+        return redirect('profile')
+
+    else:
+        form = NewProfileForm()
+
+    profile =Profile.objects.all()
+    return render(request, 'profile.html', {'profile': profile, 'title': title, 'profile': profile})
+
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
