@@ -22,7 +22,7 @@ from django.conf.urls import url,include
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('instagram_clone.urls')),
-    url('accounts/', include('registration.backends.simple.urls')),
+    path('accounts/', include('registration.backends.default.urls')),
     url('accounts/', include('django.contrib.auth.urls')),
 
 ]
