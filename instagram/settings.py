@@ -65,23 +65,23 @@ ALLOWED_HOSTS = ['https://instamyner.herokuapp.com/']
 
 INSTALLED_APPS = [
     'bootstrap5',
-    'instagram_clone',
-    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "crispy_forms",
-    "crispy_bootstrap5",
+    'instagram_clone.apps.InstagramCloneConfig',
+    'registration',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    
     
 ]
 
-CCRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
-CRISPY_TEMPLATE_PACK = "bootstrap5"
-# SITE_ID=1
+CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+SITE_ID=1
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL='welcome'

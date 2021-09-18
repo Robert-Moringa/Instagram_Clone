@@ -4,14 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
-  
-
+ 
   {% if title %}
   <title>Instagram - {{title}}</title>
   {% else %}
@@ -20,7 +13,12 @@
 
   {% block styles %}
     {% bootstrap_css %}
-   <link rel="stylesheet" href="{% static 'css/instagram.css'%}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="{% static 'css/instagram.css'%}">
     <link rel="stylesheet" href="{% static 'css/navbar.css'%}">
     <link rel="stylesheet" href="{% static 'css/status.css'%}">
     <link rel="stylesheet" href="{% static 'css/post.css'%}">
