@@ -69,11 +69,16 @@ class Comment(models.Model):
     message= models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True,null=True)
+    image_id = models.ForeignKey(Image, on_delete=models.CASCADE, null=True, blank=True)
     def add_comment(self):
         self.save()
 
     class Meta:
         ordering = ['created_on']
+
+    def get_post_comments(cls, image_id):
+        comments = cls.objects.filter(image_id=image_id)
+        return comments
 
     @classmethod
     def get_comments(cls):
