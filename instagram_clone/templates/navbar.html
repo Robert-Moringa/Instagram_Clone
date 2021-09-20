@@ -54,7 +54,7 @@
               <a href="{%url 'new_image'%}" class="dropdown-item">Create Post</a>
             </li>
             <li>
-              <a href="{%url 'profile'%}" class="dropdown-item">My Profile</a>
+              <a href="{%url 'profile'%, user==current_user}" class="dropdown-item">My Profile</a>
             </li>
             <li>
               <a href="/accounts/password/change" class="dropdown-item">Change Password</a>

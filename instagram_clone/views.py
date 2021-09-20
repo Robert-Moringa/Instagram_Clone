@@ -26,8 +26,8 @@ def profile(request):
 
     else:
         form = NewProfileForm()
-
-    profile =Profile.objects.all()
+    user=current_user
+    profile =Profile.get_profile(user)
     return render(request, 'profile.html', {'profile': profile, 'title': title, 'form': form})
 
 

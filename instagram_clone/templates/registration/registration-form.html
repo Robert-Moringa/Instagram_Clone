@@ -19,7 +19,7 @@
         </div>
         <div class="panel-body">
 
-          <form  action="/accounts/register/" method="post">
+          <form  action="/accounts/register/" method="post" class="bootstrap5">
             {% csrf_token %}
             {{form|crispy}}
             <div class="form-group">

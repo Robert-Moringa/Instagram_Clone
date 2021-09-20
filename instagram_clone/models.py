@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -50,6 +51,11 @@ class Profile(models.Model):
     def get_profiles(cls):
         profiles = cls.objects.all()
         return profiles
+
+    @classmethod
+    def get_profile(cls, user):
+        profile = cls.objects.filter(user=user)
+        return profile
 
 class Like(models.Model):
     like= models.IntegerField()
